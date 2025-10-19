@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootState } from '../store';
 import { RootStackParamList } from '../types';
+import PolandIcon from '../../assets/poland_icon.png';
+import UkIcon from '../../assets/uk_icon.png';
+import { Image } from 'react-native';
 import { setLanguage } from '../store/settingsSlice';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
@@ -36,21 +39,34 @@ export default function HomeScreen() {
         <Text className="text-4xl font-bold text-white">{t('appName')}</Text>
 
         {/* Language Switcher */}
-        <View className="flex-row space-x-3">
+        <View className="flex-row space-x-1">
             <TouchableOpacity onPress={() => dispatch(setLanguage('pl'))}>
-                <Text className={`text-2xl pe-2 ${language === 'pl' ? 'opacity-100' : 'opacity-50'}`}>
-                    🇵🇱
-                </Text>
+              <Image
+                source={PolandIcon}
+                style={{
+                  width: 30,
+                  height: 30,
+                  opacity: language === 'pl' ? 1 : 0.5,
+                  marginRight: 8,
+                }}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => dispatch(setLanguage('en'))}>
-                <Text className={`text-2xl ${language === 'en' ? 'opacity-100' : 'opacity-50'}`}>
-                    🇬🇧
-                </Text>
+              <Image
+                source={UkIcon}
+                style={{
+                  width: 30,
+                  height: 30,
+                  opacity: language === 'en' ? 1 : 0.5,
+                }}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
         </View>
       </View>
 
-      <ScrollView className="flex-1 px-6">
+      <ScrollView className="flex-1 px-6" showsVerticalScrollIndicator={false}>
         {/* Stats Grid - 4 kafelki */}
         <View className="flex-row flex-wrap justify-between mb-8">
           {/* Sesji dzisiaj */}
