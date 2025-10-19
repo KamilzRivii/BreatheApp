@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "latest",
     "@types/react": "latest",
+    "babel-preset-expo": "^54.0.4",
     "typescript": "latest"
   },
   "private": true
